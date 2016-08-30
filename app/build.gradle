@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.zhj.safeguard"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -23,9 +23,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:support-v4:24.2.0'
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile files('libs/xUtils-2.6.14.jar')
     compile files('libs/org.apache.http.legacy.jar')
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:support-v4:24.2.0'
 }

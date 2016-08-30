@@ -1,8 +1,12 @@
 package com.zhj.safeguard.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -15,13 +19,29 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 public class SplashActivity extends Activity {
 
-    private static final String TAG ="SplashActivity" ;
+    private static final String TAG = "SplashActivity";
+    private static final int SHOW_UPDATE_DIALOG = 100;
     private TextView mTvVersion;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SHOW_UPDATE_DIALOG:
+                    showUpdateDialog();
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +60,20 @@ public class SplashActivity extends Activity {
         new Thread(new CheckVersionTask()).start();
     }
 
+    //加载到主页
+    private void load2home() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private class CheckVersionTask implements Runnable {
 
         @Override
         public void run() {
             //1.去服务器获取最新版本
             String uri = "http://192.168.56.1:8080/update.json";
-            //高版本api23不能直接使用HttpClient,需导入org.apache.http.legacy.jar
+            //高版本SDK api23不能直接使用HttpClient,需导入org.apache.http.legacy.jar
 
 //            /*----------------方式一--------------------*/
 //
@@ -82,13 +109,42 @@ public class SplashActivity extends Activity {
                 if (statusCode == 200) {
                     //访问成功
                     String json = EntityUtils.toString(response.getEntity(), "utf-8");
-                    Log.d(TAG,"json"+json);
+                    Log.d(TAG, "json" + json);
+                    //解析json
+                    JSONObject jsonObj = new JSONObject(json);
+                    int netCode = jsonObj.getInt("versionCode");//服务器最新版本号
+                    //本地版本号
+                    int localcode = PackageInfoUtils.getVersionCode(SplashActivity.this);
+
+                    if (netCode > localcode) {
+                        //需要更新 ,提示用户更新
+
+                        Message message = mHandler.obtainMessage();
+                        message.sendToTarget(); //消息发一个请求
+                        message.what = SHOW_UPDATE_DIALOG;
+
+
+                    } else {//不需要更新,跳到主页
+                        load2home();
+                    }
+
                 } else {
                     //访问失败
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    private void showUpdateDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);  //v4
+        builder.setTitle("版本更新提醒");//标题
+        builder.setMessage("增加了功能"); //服务器获取
+        builder.setPositiveButton("立刻升级", null);
+        builder.setNegativeButton("稍后再说", null);
+        builder.show();
     }
 }
