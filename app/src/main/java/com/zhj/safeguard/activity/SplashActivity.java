@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,7 +22,6 @@ import com.zhj.safeguard.R;
 import com.zhj.safeguard.utils.PackageInfoUtils;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -36,6 +36,7 @@ public class SplashActivity extends Activity {
 
     private static final String TAG = "SplashActivity";
     private static final int SHOW_UPDATE_DIALOG = 100;
+    private static final int REQUEST_INSTALL = 101;
     private TextView mTvVersion;
     private String mDesc; //描述信息
     private String mUrl; //最新安装包地址
@@ -106,7 +107,7 @@ public class SplashActivity extends Activity {
 //            }
 
             /*==================方式二====================*/
-            HttpClient client = AndroidHttpClient.newInstance("zhj", SplashActivity.this);//获取客户端
+            AndroidHttpClient client = AndroidHttpClient.newInstance("zhj", SplashActivity.this);//获取客户端
             //设置参数
             HttpParams params = client.getParams(); //获得参数
             HttpConnectionParams.setConnectionTimeout(params, 5000);//连接超时
@@ -150,6 +151,8 @@ public class SplashActivity extends Activity {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
+            } finally {
+                client.close();  //关闭客户端
             }
         }
     }
@@ -186,14 +189,44 @@ public class SplashActivity extends Activity {
         //下载apk
         HttpUtils utils = new HttpUtils();
         String apkName = System.currentTimeMillis() + ".apk"; //文件名称
-        String target = new File(Environment.getExternalStorageDirectory(),
-                apkName).getAbsolutePath(); //下载后文件存放的本地地址
+        final File file = new File(Environment.getExternalStorageDirectory(), apkName);
+
+        final String target = file.getAbsolutePath(); //下载后文件存放的本地地址
         utils.download(mUrl, target, new RequestCallBack<File>() {
             @Override
             public void onSuccess(ResponseInfo<File> responseInfo) {
                 //下载成功后的回调
                 dialog1.dismiss();//消失
-                
+                //提示安装
+//                <activity android:name=".PackageInstallerActivity"
+//                android:configChanges="orientation|keyboardHidden"
+//                android:theme="@style/TallTitleBarTheme">
+//                <intent-filter>
+//                <action android:name="android.intent.action.VIEW" />
+//                <category android:name="android.intent.category.DEFAULT" />
+//                <data android:scheme="content" />
+//                <data android:scheme="file" />
+//                <data android:mimeType="application/vnd.android.package-archive" />
+//                </intent-filter>
+//                </activity>
+                Intent intent = new Intent();
+                intent.setAction("android.intent.action.VIEW");
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                startActivityForResult(intent, REQUEST_INSTALL);
+            }
+
+            /**
+             * 进度显示的回调。
+             * @param total 下载文件大小
+             * @param current 当前下载位置
+             * @param isUploading
+             */
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+
+                dialog1.setProgress((int) current);
+                dialog1.setMax((int) total);
             }
 
             @Override
@@ -205,4 +238,20 @@ public class SplashActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQUEST_INSTALL) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+
+                    break;
+                case Activity.RESULT_CANCELED:
+                    load2home();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
