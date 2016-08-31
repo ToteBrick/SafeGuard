@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -37,6 +38,7 @@ public class SplashActivity extends Activity {
     private static final String TAG = "SplashActivity";
     private static final int SHOW_UPDATE_DIALOG = 100;
     private static final int REQUEST_INSTALL = 101;
+    private static final int SHOW_ERROR = 120332;
     private TextView mTvVersion;
     private String mDesc; //描述信息
     private String mUrl; //最新安装包地址
@@ -47,6 +49,9 @@ public class SplashActivity extends Activity {
                 case SHOW_UPDATE_DIALOG:
                     showUpdateDialog();
                     break;
+                case SHOW_ERROR:
+                    Toast.makeText(SplashActivity.this, "" + msg.obj, Toast.LENGTH_SHORT).show();
+                    load2home();
                 default:
                     break;
             }
@@ -74,9 +79,21 @@ public class SplashActivity extends Activity {
 
     //加载到主页
     private void load2home() {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        finish();
+//        try {
+//            Thread.sleep(2500);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        //延时操作
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2500);
+
     }
 
     private class CheckVersionTask implements Runnable {
@@ -136,21 +153,33 @@ public class SplashActivity extends Activity {
                         //需要更新 ,提示用户更新
 
                         Message message = mHandler.obtainMessage();
-                        message.sendToTarget(); //消息发一个请求
                         message.what = SHOW_UPDATE_DIALOG;
+                        message.sendToTarget(); //消息发一个请求
 
 
                     } else {//不需要更新,跳到主页
-                        load2home();
+                        Message message = mHandler.obtainMessage();
+                        message.what = SHOW_ERROR;
+                        message.obj = "error:100124";
+                        message.sendToTarget(); //消息发一个请求
                     }
 
                 } else {
                     //访问失败
+                    load2home();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                Message message = mHandler.obtainMessage();
+                message.what = SHOW_ERROR;
+                message.obj = "error:100123";
+                message.sendToTarget(); //消息发一个请求
             } catch (JSONException e) {
                 e.printStackTrace();
+                Message message = mHandler.obtainMessage();
+                message.what = SHOW_ERROR;
+                message.obj = "error:100121";
+                message.sendToTarget(); //消息发一个请求
             } finally {
                 client.close();  //关闭客户端
             }
@@ -166,7 +195,7 @@ public class SplashActivity extends Activity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //下载最新版本,提示安装
-
+                downloadNewVersion();
 
             }
         });

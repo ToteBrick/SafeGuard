@@ -1,11 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zhj.safeguard.activity.HomeActivity">
-    <TextView
-        android:layout_width="wrap_content"
+    android:orientation="vertical" >
+
+    <!-- 上面部分 -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:background="@mipmap/blue_bkg" >
+
+        <!-- logo -->
+
+        <ImageView
+            android:id="@+id/home_iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/heima" />
+
+        <!-- 文本 -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="32dp"
+            android:layout_toRightOf="@id/home_iv_logo"
+            android:orientation="vertical" >
+
+            <com.zhj.safeguard.view.shimmer.ShimmerTextView
+                android:id="@+id/home_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="土豪金安全小卫士"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.zhj.safeguard.view.FocusTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="土豪金安全卫士，时刻保卫你手机安全。www.zhj.com.cn."
+                android:textColor="#99ff0000"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <!-- 设置按钮 -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/setting_item_selector"
+            android:onClick="clickSetting"
+            android:scaleType="center"
+            android:src="@mipmap/setting" />
+    </RelativeLayout>
+
+    <!-- gridview -->
+
+    <GridView
+        android:id="@+id/home_gridview"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="home"/>
-</RelativeLayout>
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:numColumns="2" >
+    </GridView>
+
+</LinearLayout>
