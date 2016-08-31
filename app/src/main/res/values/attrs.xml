@@ -13,4 +13,15 @@
         <attr name="reflectionColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="SettingItemView">
+        <attr name="sivTitle" format="string" />
+
+        <attr name="sivBackground">
+            <enum name="first" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="last" value="2" />
+        </attr>
+        <attr name="sivToggle" format="boolean" />
+    </declare-styleable>
+
 </resources>

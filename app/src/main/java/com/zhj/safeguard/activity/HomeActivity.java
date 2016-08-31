@@ -1,5 +1,6 @@
 package com.zhj.safeguard.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -88,7 +89,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void clickSetting(View v) {
-
+        Intent intent = new Intent(HomeActivity.this,SettingActivity.class);
+        startActivity(intent);
     }
 
     class HomeAdapter extends BaseAdapter {

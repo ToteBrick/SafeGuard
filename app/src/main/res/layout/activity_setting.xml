@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:hj="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!-- title -->
+
+    <TextView
+        style="@style/titlebarStyle"
+        android:text="设置中心" />
+
+    <com.zhj.safeguard.view.SettingItemView
+        android:id="@+id/setting_auto_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        hj:sivBackground="first"
+        hj:sivTitle="设置自动更新" />
+
+    <com.zhj.safeguard.view.SettingItemView
+        android:id="@+id/setting_siv_callsmssafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        hj:sivBackground="last"
+        hj:sivTitle="骚扰拦截设置" />
+
+    <com.zhj.safeguard.view.SettingItemView
+        android:id="@+id/setting_siv_number_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        hj:sivBackground="first"
+        hj:sivTitle="号码归属地查询"
+
+        />
+
+    <com.zhj.safeguard.view.SettingItemView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        hj:sivBackground="last"
+        hj:sivTitle="归属地风格设置"
+        hj:sivToggle="false" />
+
+</LinearLayout>
