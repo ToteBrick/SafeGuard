@@ -20,7 +20,9 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.zhj.safeguard.R;
+import com.zhj.safeguard.utils.Constants;
 import com.zhj.safeguard.utils.PackageInfoUtils;
+import com.zhj.safeguard.utils.PreferenceUtils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -74,7 +76,13 @@ public class SplashActivity extends Activity {
     }
 
     private void checkVersion() {
+        //判断更新的标记->持久化存储
+        boolean autoUpdate = PreferenceUtils.getBoolean(this, Constants.AUTOUPDATE);
+        if (autoUpdate){
         new Thread(new CheckVersionTask()).start();
+        }else {
+            load2home();
+        }
     }
 
     //加载到主页
@@ -97,6 +105,8 @@ public class SplashActivity extends Activity {
     }
 
     private class CheckVersionTask implements Runnable {
+
+
 
         @Override
         public void run() {

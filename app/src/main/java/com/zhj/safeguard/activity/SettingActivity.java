@@ -12,7 +12,7 @@ import com.zhj.safeguard.view.SettingItemView;
 
 
 public class SettingActivity extends Activity {
-    private SettingItemView mSivAutoUpdate;
+    private SettingItemView mSivAutoUpdate; //自动更新
     private SettingItemView mSivCallSmsSafe;
     private SettingItemView mSivNumberAddress;
 

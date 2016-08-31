@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ import com.zhj.safeguard.view.shimmer.ShimmerTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ImageView mIv_logo;
     private GridView mGradview;
@@ -85,12 +86,17 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initListner() {
-
+        mGradview.setOnItemClickListener(this);
     }
 
     public void clickSetting(View v) {
         Intent intent = new Intent(HomeActivity.this,SettingActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     class HomeAdapter extends BaseAdapter {
