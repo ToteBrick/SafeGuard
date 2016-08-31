@@ -24,7 +24,6 @@
     <translate
         android:duration="@android:integer/config_longAnimTime"
         android:fromXDelta="100%"
-        android:interpolator="@interpolator/anticipate"
         android:toXDelta="0" />
 
     <alpha
