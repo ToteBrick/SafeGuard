@@ -45,7 +45,7 @@ public class ContactSelectedActivity2 extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				//改变游标指向
+				//改变游标指向,选中点击的item.
 				mCursor.moveToPosition(position);
 				ContactBean bean = ContactUtils.getContactBean(mCursor);
 				

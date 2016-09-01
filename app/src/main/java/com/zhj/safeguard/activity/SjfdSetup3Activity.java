@@ -39,7 +39,7 @@ public class SjfdSetup3Activity extends SjfdBaseActivity {
 			public void onClick(View v) {
 				// 跳转到联系人界面
 				Intent intent = new Intent(SjfdSetup3Activity.this,
-						ContactSelectedActivity.class);
+						ContactSelectedActivity2.class);
 				startActivityForResult(intent, REQUEST_CODE_CONTACT);
 			}
 		});
