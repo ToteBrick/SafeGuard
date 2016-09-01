@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">SafeGuard</string>
+    <string name="app_name">土豪金手机卫士</string>
 
     <string name="title_activity_home">HomeActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="sample_device_admin_description">手机安全卫士，时刻保卫你的安全。</string>
+    <string name="sample_device_admin">土豪金手机安全卫士</string>
 </resources>
