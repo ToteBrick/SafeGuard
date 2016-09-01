@@ -31,6 +31,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
         //获得存储的sim
         boolean sim = PreferenceUtils.getBoolean(context, Constants.SJFD_SIM);
         if (currentSim.equals(sim)){ //如果一致，不发送报警短信
+            Log.d(TAG, "onReceive: "+"没有被盗");
             return;
         }
         //lost
