@@ -39,7 +39,7 @@ public class SjfdSetup3Activity extends SjfdBaseActivity {
 			public void onClick(View v) {
 				// 跳转到联系人界面
 				Intent intent = new Intent(SjfdSetup3Activity.this,
-						ContactSelectedActivity2.class);
+						ContactSelectedActivity.class);
 				startActivityForResult(intent, REQUEST_CODE_CONTACT);
 			}
 		});
@@ -78,7 +78,7 @@ public class SjfdSetup3Activity extends SjfdBaseActivity {
 		// 如果没设置，提醒设置，不让进入下一页
 		String number = mEtNumber.getText().toString().trim();
 		if (TextUtils.isEmpty(number)) {
-			Toast.makeText(getApplicationContext(), "如果要开启防盗保护，必须设置安全号码", 0)
+			Toast.makeText(getApplicationContext(), "如果要开启防盗保护，必须设置安全号码", Toast.LENGTH_SHORT)
 					.show();
 			return true;
 		}

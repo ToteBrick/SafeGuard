@@ -17,6 +17,11 @@ import java.util.List;
 
 public class ContactUtils {
 
+	/**
+	 *
+	 * @param context
+	 * @return 获得所有联系人。
+     */
 	public static List<ContactBean> getAllContacts(Context context) {
 
 		List<ContactBean> list = new ArrayList<ContactBean>();
@@ -50,7 +55,7 @@ public class ContactUtils {
 		return list;
 	}
 
-	/*
+	/**
 	 * 获得联系人的图片
 	 */
 	public static Bitmap getContactIcon(Context context, long contactId) {
@@ -65,7 +70,7 @@ public class ContactUtils {
 
 		return bitmap;
 	}
-   /*
+   /**
     * 获得游标集合
     */
 	public static Cursor getAllCursor(Context context) {
@@ -87,7 +92,12 @@ public class ContactUtils {
 				sortOrder);
 
 	}
-	
+
+	/**
+	 *
+	 * @param cursor
+	 * @return 通过cursor获得联系人。
+     */
 	public static ContactBean getContactBean (Cursor cursor){
 		
 		ContactBean bean = new ContactBean();

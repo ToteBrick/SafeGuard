@@ -121,7 +121,7 @@ public class ContactSelectedActivity extends Activity {
 
 			if (convertView == null) {
 				// 1,加载布局
-				convertView.inflate(ContactSelectedActivity.this,
+				convertView = View.inflate(ContactSelectedActivity.this,
 						R.layout.item_contacted_selected, null);
 				// 2,初始化holder
 				holder = new ViewHolder();
@@ -176,7 +176,7 @@ public class ContactSelectedActivity extends Activity {
 
 	}
 
-	static class ViewHolder {
+	 class ViewHolder {
 
 		ImageView ivIcon;
 		TextView tvName, tvNumber;

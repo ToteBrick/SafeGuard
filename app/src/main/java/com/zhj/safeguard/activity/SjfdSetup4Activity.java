@@ -1,6 +1,5 @@
 package com.zhj.safeguard.activity;
 
-
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -75,16 +74,16 @@ public class SjfdSetup4Activity extends SjfdBaseActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == REQUEST_CODE_ENABLE_ADMIN) {
 			switch (resultCode) {
-			case Activity.RESULT_OK:
-				mIvAdmin.setImageResource(R.mipmap.admin_activated);
-//				 mDpm.lockNow();
-				break;
-			case Activity.RESULT_CANCELED:
-//				 finish();
-				break;
+				case Activity.RESULT_OK:
+					mIvAdmin.setImageResource(R.mipmap.admin_activated);
+//					 mDpm.lockNow();
+					break;
+				case Activity.RESULT_CANCELED:
+					// finish();
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 		}
 	}
@@ -106,7 +105,7 @@ public class SjfdSetup4Activity extends SjfdBaseActivity {
 
 	@Override
 	protected boolean doNext() {
-		//  如果激活了设备管理员，才能下一步
+		// 如果激活了设备管理员，才能下一步
 		ComponentName who = new ComponentName(this, SafeAdminReceiver.class);
 		if (!mDpm.isAdminActive(who)) {
 			// 要开启手机防盗，必须开启设备管理员
