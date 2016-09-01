@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -53,12 +55,14 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <!--收短信receiver 此处的action提示不出，得手敲 -->
+        <!-- 收短信receiver 此处的action提示不出，得手敲 -->
         <receiver android:name=".receiver.SmsReceiver">
             <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+        <!-- gps  -->
+        <service android:name=".receiver.GPSService"/>
     </application>
 
 </manifest>

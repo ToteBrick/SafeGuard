@@ -15,8 +15,6 @@ import com.zhj.safeguard.utils.PreferenceUtils;
 public class SmsReceiver extends BroadcastReceiver {
     private static final String TAG = "SmsReceiver";
 
-    public SmsReceiver() {
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {

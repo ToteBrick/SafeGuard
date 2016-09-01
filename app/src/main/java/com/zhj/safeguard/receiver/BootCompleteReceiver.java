@@ -13,8 +13,6 @@ import com.zhj.safeguard.utils.PreferenceUtils;
 public class BootCompleteReceiver extends BroadcastReceiver {
     private static final String TAG = "BootCompleteReceiver";
 
-    public BootCompleteReceiver() {
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
