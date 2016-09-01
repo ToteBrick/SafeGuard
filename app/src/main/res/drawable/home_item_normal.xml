@@ -4,7 +4,7 @@
     <!-- 半径 -->
     <size android:height="21dp"
         android:width="21dp"/>
-    <solid android:color="#99ffffff"/>
+    <solid android:color="#00e9fd"/>
 
     
 

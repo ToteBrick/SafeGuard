@@ -66,7 +66,7 @@ public abstract class SjfdBaseActivity extends Activity {
 			return;
 		}
 		// enterAnima进入activity动画,exitAnim退出activity动画
-		overridePendingTransition(R.anim.popup_enter, R.anim.pre_exit);
+		overridePendingTransition(R.anim.pre_enter, R.anim.pre_exit);
 		finish();
 	}
 
