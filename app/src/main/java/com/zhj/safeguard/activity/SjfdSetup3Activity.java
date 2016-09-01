@@ -38,9 +38,9 @@ public class SjfdSetup3Activity extends SjfdBaseActivity {
 			@Override
 			public void onClick(View v) {
 				// 跳转到联系人界面
-//				Intent intent = new Intent(SjfdSetup3Activity.this,
-//						ContactSelectedActivity2.class);
-//				startActivityForResult(intent, REQUEST_CODE_CONTACT);
+				Intent intent = new Intent(SjfdSetup3Activity.this,
+						ContactSelectedActivity2.class);
+				startActivityForResult(intent, REQUEST_CODE_CONTACT);
 			}
 		});
 	}
@@ -90,24 +90,24 @@ public class SjfdSetup3Activity extends SjfdBaseActivity {
 		return false;
 	}
 
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		if (requestCode == REQUEST_CODE_CONTACT) {
-//
-//			switch (resultCode) {
-//			case Activity.RESULT_OK:
-//				String number = data
-//						.getStringExtra(ContactSelectedActivity.KEY_NUMBER);
-//				mEtNumber.setText(number);
-//				mEtNumber.setSelection(number.length());
-//				break;
-//
-//			default:
-//				break;
-//			}
-//		}
-//		super.onActivityResult(requestCode, resultCode, data);
-//	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_CODE_CONTACT) {
+
+			switch (resultCode) {
+			case Activity.RESULT_OK:
+				String number = data
+						.getStringExtra(ContactSelectedActivity.KEY_NUMBER);
+				mEtNumber.setText(number);
+				mEtNumber.setSelection(number.length());
+				break;
+
+			default:
+				break;
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
 
 	@Override
 	protected boolean doPre() {
