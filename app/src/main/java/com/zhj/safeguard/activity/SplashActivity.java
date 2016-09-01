@@ -133,6 +133,7 @@ public class SplashActivity extends Activity {
 //                e.printStackTrace();
 //            }
 
+
             /*==================方式二====================*/
             AndroidHttpClient client = AndroidHttpClient.newInstance("zhj", SplashActivity.this);//获取客户端
             //设置参数
