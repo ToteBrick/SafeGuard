@@ -4,11 +4,10 @@ android {
 //    useLibrary 'org.apache.http.legacy'
     compileSdkVersion 'Google Apis:Google Apis:23'
     buildToolsVersion '23.0.1'
-
     defaultConfig {
         applicationId "com.zhj.safeguard"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -17,6 +16,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 

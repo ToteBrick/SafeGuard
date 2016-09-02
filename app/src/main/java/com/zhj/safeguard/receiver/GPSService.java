@@ -27,6 +27,7 @@ import com.zhj.safeguard.utils.PreferenceUtils;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class GPSService extends Service {
@@ -210,6 +211,12 @@ public class GPSService extends Service {
             return new double[]{s2c.x, s2c.y};
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;

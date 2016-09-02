@@ -40,21 +40,18 @@ public class SmsReceiver extends BroadcastReceiver {
                     // GPS:
                     Log.d(TAG, "获取位置");
                     // 获取GPS位置
-//                    Intent service = new Intent(context, GPSService.class);
-//                    context.startService(service);
-
+                    Intent service = new Intent(context, GPSService.class);
+                    context.startService(service);
                     abortBroadcast();
                 } else if ("#*alarm*#".equals(body)) {
                     // 报警音乐
                     Log.d(TAG, "报警音乐 ");
 
                     MediaPlayer player = MediaPlayer.create(context, R.raw.alarm);
-
-//                    player.setLooping(true);//循环播放
+//                  player.setLooping(true);//循环播放
                     player.setLooping(false);
                     player.setVolume(1.0f, 1.0f);
                     player.start();
-
                     abortBroadcast();
                 } else if ("#*lockscreen*#".equals(body)) {
                     // 远程锁屏
@@ -62,9 +59,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
                     DevicePolicyManager dpm = (DevicePolicyManager) context
                             .getSystemService(Context.DEVICE_POLICY_SERVICE);
-
                     dpm.resetPassword("123", 0);
-
                     dpm.lockNow();
 
                     abortBroadcast();
@@ -76,7 +71,6 @@ public class SmsReceiver extends BroadcastReceiver {
                             .getSystemService(Context.DEVICE_POLICY_SERVICE);
 
 //                    dpm.wipeData(0);  //太暴力，屏蔽为妙
-
                     abortBroadcast();
                 }
             }

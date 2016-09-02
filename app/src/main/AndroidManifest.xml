@@ -10,8 +10,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -39,15 +39,20 @@
         <activity android:name=".activity.ContactSelectedActivity" />
         <activity android:name=".activity.ContactSelectedActivity2" />
 
-        <!-- 设备管理者 -->
+
+        <!-- 设备管理员的Receiver -->
         <receiver
             android:name=".receiver.SafeAdminReceiver"
             android:description="@string/sample_device_admin_description"
             android:label="@string/sample_device_admin"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_safe" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
         </receiver>
         <!-- 重启receiver -->
         <receiver android:name=".receiver.BootCompleteReceiver">
@@ -62,7 +67,7 @@
             </intent-filter>
         </receiver>
         <!-- gps  -->
-        <service android:name=".receiver.GPSService"/>
+        <service android:name=".receiver.GPSService" />
     </application>
 
 </manifest>
