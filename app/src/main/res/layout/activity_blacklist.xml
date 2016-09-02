@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/bl_tv_title"
+        style="@style/titlebarStyle"
+        android:text="添加黑名单" />
+
+    <TextView
+        style="@style/NormalTextViewStyle"
+        android:layout_margin="8dp"
+        android:text="电话号码" />
+
+    <EditText
+        android:id="@+id/bl_et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/input_selector"
+        android:hint="号码不能为空"
+        android:phoneNumber="true"
+        android:singleLine="true" />
+
+    <TextView
+        style="@style/NormalTextViewStyle"
+        android:layout_margin="8dp"
+        android:text="拦截类型" />
+
+    <RadioGroup
+        android:id="@+id/bl_rg_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/bl_rb_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="电话" />
+
+        <RadioButton
+            android:id="@+id/bl_rb_sms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="短信" />
+
+        <RadioButton
+            android:id="@+id/bl_rb_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="全部 " />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/bl_btn_ok"
+                style="@style/NormalButtonStyle"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:text="添加" />
+
+            <Button
+                android:id="@+id/bl_btn_cancel"
+                style="@style/NormalButtonStyle"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_item_selector"
+                android:text="取消"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

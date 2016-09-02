@@ -106,15 +106,20 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-            //判断是否第一次使用
-                // 进入手机防盗界面
+                //手机防盗
                 performSjfd();
+                break;
+            case 1:
+                //骚扰拦截
+                performSrlj();
                 break;
             default:
                 break;
         }
 
     }
+
+
     // 进入手机防盗界面
     private void performSjfd() {
         // 第一次使用此功能-->没有设置过密码
@@ -129,6 +134,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             showEnterPwdDailog();
         }
 
+    }
+    //骚扰拦截
+    private void performSrlj() {
+        Intent intent = new Intent(this, CallSmsSafeActivity.class);
+        startActivity(intent);
     }
 
     private void showEnterPwdDailog() {

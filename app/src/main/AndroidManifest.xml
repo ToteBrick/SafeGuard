@@ -38,14 +38,13 @@
         <activity android:name=".activity.SjfdSetup5Activity" />
         <activity android:name=".activity.ContactSelectedActivity" />
         <activity android:name=".activity.ContactSelectedActivity2" />
-
-
+        <activity android:name=".activity.CallSmsSafeActivity" />
         <!-- 设备管理员的Receiver -->
         <receiver
             android:name=".receiver.SafeAdminReceiver"
             android:description="@string/sample_device_admin_description"
             android:label="@string/sample_device_admin"
-            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_safe" />
@@ -66,8 +65,10 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <!-- gps  -->
+        <!-- gps -->
         <service android:name=".receiver.GPSService" />
+
+        <activity android:name=".activity.BlackListEditActivity"></activity>
     </application>
 
 </manifest>
