@@ -2,7 +2,7 @@ package com.zhj.safeguard.DB;
 
 public interface BlackListDB {
 
-	// 数据名
+	// 数据库名
 	String DB_NAME = "black.db";
 	int VERSION = 1;
 
