@@ -113,10 +113,19 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                 //骚扰拦截
                 performSrlj();
                 break;
+            case 6:
+                //缓存清理
+                performHcql();
+                break;
             default:
                 break;
         }
 
+    }
+
+    private void performHcql() {
+        Intent intent = new Intent(this, CleanCacheActivity.class);
+        startActivity(intent);
     }
 
 

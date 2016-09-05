@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp" >
+
+    <ImageView
+        android:id="@+id/item_cc_iv_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/item_cc_iv_clean"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/btn_clean_selector" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toLeftOf="@id/item_cc_iv_clean"
+        android:layout_toRightOf="@id/item_cc_iv_icon"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/item_cc_tv_name"
+            style="@style/NormalTextViewStyle"
+            android:singleLine="true"
+            android:text="应用名称xxsfdjlasjdlajdsljdsaldsajljfds" />
+
+        <TextView
+            android:id="@+id/item_cc_tv_cachesizes"
+            style="@style/NormalTextViewStyle"
+            android:singleLine="true"
+            android:text="缓存大小:"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>
