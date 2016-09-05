@@ -1,4 +1,4 @@
-package com.zhj.safeguard.receiver;
+package com.zhj.safeguard.service;
 
 import android.Manifest;
 import android.app.Service;

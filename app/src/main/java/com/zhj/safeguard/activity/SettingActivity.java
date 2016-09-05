@@ -1,19 +1,22 @@
 package com.zhj.safeguard.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.zhj.safeguard.R;
+import com.zhj.safeguard.service.CallSmsService;
 import com.zhj.safeguard.utils.Constants;
 import com.zhj.safeguard.utils.PreferenceUtils;
+import com.zhj.safeguard.utils.ServiceStateUtils;
 import com.zhj.safeguard.view.SettingItemView;
 
 
 public class SettingActivity extends Activity {
     private SettingItemView mSivAutoUpdate; //自动更新
-    private SettingItemView mSivCallSmsSafe;
+    private SettingItemView mSivCallSmsSafe; //骚扰拦截
     private SettingItemView mSivNumberAddress;
 
     @Override
@@ -38,12 +41,12 @@ public class SettingActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        // 回显服务状态
+    //     回显服务状态
 
-        // 显示骚扰拦截服务状态
-//        mSivCallSmsSafe.setToggleState(ServiceStateUtils.isRunning(
-//                getApplicationContext(), CallSmsService.class));
-//
+     //    显示骚扰拦截服务状态
+        mSivCallSmsSafe.setToggleState(ServiceStateUtils.isRunning(
+                getApplicationContext(), CallSmsService.class));
+
 //        // 显示归属地服务状态
 //        mSivNumberAddress.setToggleState(ServiceStateUtils.isRunning(
 //                getApplicationContext(), NumberAddressService.class));
@@ -69,15 +72,15 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // 如果服务是开启就关闭，关闭就开启
-//                Intent intent = new Intent(SettingActivity.this,
-//                        CallSmsService.class);
+                Intent intent = new Intent(SettingActivity.this,
+                        CallSmsService.class);
                 mSivCallSmsSafe.toggle();
-//                if (ServiceStateUtils.isRunning(getApplicationContext(),
-//                        CallSmsService.class)) {
-//                    stopService(intent);
-//                } else {
-//                    startService(intent);
-//                }
+                if (ServiceStateUtils.isRunning(getApplicationContext(),
+                        CallSmsService.class)) {
+                    stopService(intent);
+                } else {
+                    startService(intent);
+                }
             }
         });
         //号码归属地服务

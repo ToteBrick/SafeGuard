@@ -21,6 +21,16 @@ android {
     }
 }
 
+/*sourceSets {
+    main {
+        java.srcDirs = ['src/main/java', 'src/main/aidl']
+        resources.srcDirs = ['src/main/java', 'src/main/aidl']
+        aidl.srcDirs = ['src/main/aidl']
+        res.srcDirs = ['src/main/res']
+        assets.srcDirs = ['src/main/assets']
+    }
+}*/
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -29,4 +39,5 @@ dependencies {
     compile files('libs/org.apache.http.legacy.jar')
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:support-v4:24.2.0'
+    compile files('libs/okhttp-3.4.1.jar')
 }

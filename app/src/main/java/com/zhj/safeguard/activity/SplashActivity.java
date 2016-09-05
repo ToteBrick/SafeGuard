@@ -78,9 +78,9 @@ public class SplashActivity extends Activity {
     private void checkVersion() {
         //判断更新的标记->持久化存储
         boolean autoUpdate = PreferenceUtils.getBoolean(this, Constants.AUTOUPDATE);
-        if (autoUpdate){
-        new Thread(new CheckVersionTask()).start();
-        }else {
+        if (autoUpdate) {
+            new Thread(new CheckVersionTask()).start();
+        } else {
             load2home();
         }
     }
@@ -105,7 +105,6 @@ public class SplashActivity extends Activity {
     }
 
     private class CheckVersionTask implements Runnable {
-
 
 
         @Override
@@ -194,6 +193,30 @@ public class SplashActivity extends Activity {
             } finally {
                 client.close();  //关闭客户端
             }
+            /*=================方式三okhttp=====================*/
+//            OkHttpClient client = new OkHttpClient();
+//            Request request = new Request.Builder()
+//                    .get()
+//                    .url(uri)
+//                    .build();
+//            Response response = null;
+//            try {
+//                response = client.newCall(request).execute();
+//                if (response.isSuccessful()) {
+//                    Log.d(TAG, "打印GET响应的数据：" + response.body().string());
+//                } else {
+//                    Message message = mHandler.obtainMessage();
+//                     message.what = SHOW_ERROR;
+//                    message.obj = "error:100121";
+//                    message.sendToTarget(); //消息发一个请求
+//                }
+//            } catch (IOException e) {
+//                Message message = mHandler.obtainMessage();
+//                e.printStackTrace();
+//                message.what = SHOW_ERROR;
+//                message.obj = "error:100120";
+//                message.sendToTarget(); //消息发一个请求
+//            }
         }
     }
 

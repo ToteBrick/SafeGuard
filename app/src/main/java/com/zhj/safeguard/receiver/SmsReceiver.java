@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 
 import com.zhj.safeguard.R;
+import com.zhj.safeguard.service.GPSService;
 import com.zhj.safeguard.utils.Constants;
 import com.zhj.safeguard.utils.PreferenceUtils;
 

@@ -3,6 +3,7 @@ package com.zhj.safeguard.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 import com.zhj.safeguard.DB.BlackDao;
 import com.zhj.safeguard.R;
 import com.zhj.safeguard.bean.BlackBean;
-import com.zhj.safeguard.utils.Logger;
 
 import java.util.List;
 
@@ -290,7 +290,7 @@ public class CallSmsSafeActivity extends Activity implements
         if (lastVisiblePosition == mAdapter.getCount() - 1) {
 
             // 加载更多
-            Logger.d(TAG, "加载更多数据");
+            Log.d(TAG, "加载更多数据");
 
             // 显示进度
             mLLProgress.setVisibility(View.VISIBLE);
