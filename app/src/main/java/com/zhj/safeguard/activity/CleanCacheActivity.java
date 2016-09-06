@@ -228,7 +228,7 @@ public class CleanCacheActivity extends Activity {
 
             // 设置进度最大值
             max = packages.size();
-            runOnUiThread(new Runnable() {
+            runOnUiThread(new Runnable() {  //低版本进度条可以直接在子线程更新，可以确定api 23 不行。
                 @Override
                 public void run() {
                     mPbProgress.setMax(max);
@@ -318,9 +318,9 @@ public class CleanCacheActivity extends Activity {
             long cacheSize = stats.cacheSize;
             String packageName = stats.packageName;
 
-            // Logger.d(TAG, "package : " + packageName);
-            // Logger.d(TAG, "cacheSize : " + cacheSize);
-            // Logger.d(TAG, "---------------------------------");
+            // Log.d(TAG, "package : " + packageName);
+            // Log.d(TAG, "cacheSize : " + cacheSize);
+            // Log.d(TAG, "---------------------------------");
 
             try {
                 ApplicationInfo applicationInfo = mPm.getApplicationInfo(

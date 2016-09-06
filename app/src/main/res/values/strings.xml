@@ -6,4 +6,11 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="sample_device_admin_description">手机安全卫士，时刻保卫你的安全。</string>
     <string name="sample_device_admin">土豪金手机安全卫士</string>
+
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
 </resources>
